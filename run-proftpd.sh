@@ -27,6 +27,10 @@ update_proftpd_setting() {
   update_proftpd_setting /etc/proftpd/proftpd.conf \
    ServerName "$PROFTPD_SERVER_NAME"
 
+[ -n "$PROFTPD_REQUIRE_VALID_SHELL" ] && \
+  update_proftpd_setting /etc/proftpd/proftpd.conf \
+   RequireValidShell "$PROFTPD_REQUIRE_VALID_SHELL"
+
 [ -n "$PROFTPD_TIMEOUT_NO_TRANSFER" ] && \
   update_proftpd_setting /etc/proftpd/proftpd.conf \
    TimeoutNoTransfer "$PROFTPD_TIMEOUT_NO_TRANSFER"
