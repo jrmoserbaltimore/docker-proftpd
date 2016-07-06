@@ -9,7 +9,7 @@
 FROM ubuntu:16.04
 MAINTAINER John Moser <john.r.moser@gmail.com>
 
-LABEL version="1.0" description="proftpd server on Ubuntu 16.04"
+LABEL version="0.9" description="proftpd server on Ubuntu 15.10"
 
 # Environment variable defaults
 ENV PROFTPD_FTP_PORT="21" \
@@ -32,10 +32,12 @@ ENV PROFTPD_FTP_PORT="21" \
 
 # Get latest updates
 # Initialize proftpd
+# This also installs libpam-winbind and libnss-winbind
 RUN apt-get update \
   && apt-get install -y proftpd proftpd-mod-vroot proftpd-mod-ldap \
      proftpd-mod-mysql proftpd-mod-pgsql proftpd-mod-sqlite \
      proftpd-mod-tar proftpd-mod-case \
+     libpam-winbind libnss-winbind libpam-krb5 \
   && apt-get clean \
   && /etc/init.d/proftpd start \
   && /etc/init.d/proftpd stop \
