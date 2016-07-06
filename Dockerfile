@@ -33,7 +33,8 @@ ENV PROFTPD_FTP_PORT="21" \
 # Get latest updates
 # Initialize proftpd
 RUN apt-get update \
-  && apt-get install -y proftpd proftpd-mod-vroot proftpd-mod-ldap \
+  && DEBIAN_FRONTEND=noninteractive \
+     apt-get install -y proftpd proftpd-mod-vroot proftpd-mod-ldap \
      proftpd-mod-mysql proftpd-mod-pgsql proftpd-mod-sqlite \
      proftpd-mod-tar proftpd-mod-case \
   && apt-get clean \
