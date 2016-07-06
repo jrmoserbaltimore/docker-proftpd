@@ -7,7 +7,7 @@ update_proftpd_setting() {
   setting="$2"
   value="$3"
 
-  sed -i -e 's/^[ \t]*'"$setting"'[ \t].*$/'"$setting $value"'/' "$conffile"
+  sed -i -e 's#^[ \t]*'"$setting"'[ \t].*$#'"$setting $value"'#' "$conffile"
 }
 
 [ -n "$PROFTPD_FTP_PORT" ] && \
