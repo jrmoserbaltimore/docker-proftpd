@@ -37,6 +37,7 @@ RUN apt-get update \
      proftpd-mod-mysql proftpd-mod-pgsql proftpd-mod-sqlite \
      proftpd-mod-tar proftpd-mod-case \
   && apt-get clean \
+  && find /var/lib/apt/lists/ -type f -delete \
   && /etc/init.d/proftpd start \
   && /etc/init.d/proftpd stop \
   && mkdir -p -m 0755 /etc/proftpd/auth.d \

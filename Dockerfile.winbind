@@ -39,6 +39,7 @@ RUN apt-get update \
      proftpd-mod-tar proftpd-mod-case \
      libpam-winbind libnss-winbind libpam-krb5 \
   && apt-get clean \
+  && find /var/lib/apt/lists/ -type f -delete \
   && /etc/init.d/proftpd start \
   && /etc/init.d/proftpd stop \
   && mkdir -p -m 0755 /etc/proftpd/auth.d \
